@@ -37,7 +37,10 @@ class _CollectionScreenState extends State<CollectionScreen> {
           } else {
             friends = box.values.toList().where(
               (element) {
-                indexCollection.add(i);
+                if (element.name_category == widget.category!.name_category) {
+                  indexCollection.add(i);
+                }
+                i++;
                 return element.name_category == widget.category!.name_category;
               },
             ).toList();
