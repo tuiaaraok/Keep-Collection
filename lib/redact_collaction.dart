@@ -95,7 +95,9 @@ class _RedactCollactionState extends State<RedactCollaction> {
             children: [
               GestureDetector(
                 onTap: () {
-                  getLostData().whenComplete(() {});
+                  getLostData().whenComplete(() {
+                    setState(() {});
+                  });
                 },
                 child: Container(
                   width: 390.w,

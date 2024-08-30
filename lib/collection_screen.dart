@@ -32,6 +32,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
           List<int> indexCollection = [];
           int i = 0;
           List<Collection> friends = [];
+
           if (widget.category == null) {
             friends = box.values.toList();
           } else {
@@ -318,9 +319,13 @@ class _CollectionScreenState extends State<CollectionScreen> {
       itemCount: friends.length,
       itemBuilder: (context, index) {
         // Убедитесь, что индекс не выходит за границы
+        final currentIndex = friends.length - index - 1;
         if (index < friends.length) {
-          return buildFriendCard(friends[index],
-              indexCollection.isEmpty ? index : indexCollection[index]);
+          return buildFriendCard(
+              friends[currentIndex],
+              indexCollection.isEmpty
+                  ? currentIndex
+                  : indexCollection[currentIndex]);
         } else {
           return SizedBox.shrink(); // Безопасно возвращаем пустой вид
         }

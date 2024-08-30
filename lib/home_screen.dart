@@ -142,10 +142,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       itemCount: friends.length,
       itemBuilder: (context, index) {
-        // Убедитесь, что индекс не выходит за границы
+        final currentIndex = box.length - index - 1;
         if (index < friends.length) {
           return buildFriendCard(
-            friends[index],
+            friends[currentIndex],
           );
         } else {
           return SizedBox.shrink(); // Безопасно возвращаем пустой вид
