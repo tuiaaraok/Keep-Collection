@@ -80,7 +80,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                   height: 170.h,
                   width: 140.w,
                   decoration: BoxDecoration(
-                    color: Color(0xFF5545B8).withOpacity(0.5),
+                    color: Color(0xFF4477B1).withOpacity(0.5),
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
                     image: _image == null
                         ? null

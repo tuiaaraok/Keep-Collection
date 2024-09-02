@@ -51,8 +51,11 @@ class _RedactCollactionState extends State<RedactCollaction> {
         leading: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Text(
-            "Add the first category",
-            style: TextStyle(color: Colors.white, fontSize: 24.sp),
+            contactsBox.getAt(widget.index)!.name_category,
+            style: TextStyle(
+                fontSize: 24.sp,
+                color: Color(0xFF4477B1),
+                fontWeight: FontWeight.bold),
           ),
         ),
         actions: [
@@ -108,8 +111,15 @@ class _RedactCollactionState extends State<RedactCollaction> {
                           top: 0,
                           child: GestureDetector(
                             onTap: () {
-                              contactsBox.deleteAt(widget.index);
-                              Navigator.pop(context);
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      CustomDialog(
+                                        index: widget.index,
+                                        name_cat: contactsBox
+                                            .getAt(widget.index)!
+                                            .name_category,
+                                      ));
                             },
                             child: CircleAvatar(
                               radius: 20.r,
@@ -375,6 +385,121 @@ class _RedactCollactionState extends State<RedactCollaction> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomDialog extends StatelessWidget {
+  CustomDialog({required this.index, required this.name_cat});
+  int index;
+  String name_cat;
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
+      child: dialogContent(context),
+    );
+  }
+
+  Widget dialogContent(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 0.0, right: 0.0),
+      child: Container(
+        height: 300.h,
+        width: 310.w,
+        padding: EdgeInsets.only(
+          top: 18.0,
+        ),
+        margin: EdgeInsets.only(top: 13.0, right: 8.0),
+        decoration: BoxDecoration(
+            color: Color(0xFF4477B1),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(16.0),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 0.0,
+                offset: Offset(0.0, 0.0),
+              ),
+            ]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: new Text("Delete?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 20.sp,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: new Text('“${name_cat}”',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 25.sp,
+                      color: Colors.white.withOpacity(0.5),
+                      fontWeight: FontWeight.w600)),
+            ),
+            GestureDetector(
+              onTap: () {
+                final constain = Hive.box<Collection>(HiveBoxes.collection);
+                constain.deleteAt(index).whenComplete(() {
+                  Navigator.pop(
+                    context,
+                  );
+                  Navigator.pop(
+                    context,
+                  );
+                });
+              },
+              child: Container(
+                height: 36.h,
+                width: 100.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                    color: Colors.black),
+                child: Center(
+                    child: Text(
+                  "Yes",
+                  style: TextStyle(
+                      fontSize: 18.sp,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500),
+                )),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 12.h),
+                child: Container(
+                  height: 36.h,
+                  width: 100.w,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                      color: Colors.black),
+                  child: Center(
+                      child: Text(
+                    "No",
+                    style: TextStyle(
+                        fontSize: 18.sp,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500),
+                  )),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
