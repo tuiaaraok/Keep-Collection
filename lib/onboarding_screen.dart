@@ -46,35 +46,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Container(
-                  height: 610.h,
-                  child: PageView(
-                    physics: ClampingScrollPhysics(),
-                    controller: _pageController,
-                    onPageChanged: (int page) {
-                      setState(() {
-                        _currentPage = page;
-                      });
-                    },
-                    children: <Widget>[
-                      WidgetForOnBoardingInfo(
-                        asset_image: 'assets/images/create_section.png',
-                        title: 'Add sections with\ncollections!',
-                        subtitle:
-                            'Create a section with your\ncollections, record and add the image\nyou need',
-                      ),
-                      WidgetForOnBoardingInfo(
-                        asset_image: 'assets/images/buy_add.png',
-                        title: 'Do you have the things\nyou want?',
-                        subtitle:
-                            "Add what you plan to buy in the\nfuture, keep track of your goals",
-                      ),
-                      WidgetForOnBoardingInfo(
-                        asset_image: 'assets/images/update_collection.png',
-                        title: 'Update and edit your\ncollection!',
-                        subtitle: "Add different items, edit the\ncollection",
-                      ),
-                    ],
+                Expanded(
+                  child: Container(
+                    child: PageView(
+                      physics: ClampingScrollPhysics(),
+                      controller: _pageController,
+                      onPageChanged: (int page) {
+                        setState(() {
+                          _currentPage = page;
+                        });
+                      },
+                      children: <Widget>[
+                        WidgetForOnBoardingInfo(
+                          asset_image: 'assets/images/create_section.png',
+                          title: 'Add sections with\ncollections!',
+                          subtitle:
+                              'Create a section with your\ncollections, record and add the image\nyou need',
+                        ),
+                        WidgetForOnBoardingInfo(
+                          asset_image: 'assets/images/buy_add.png',
+                          title: 'Do you have the things\nyou want?',
+                          subtitle:
+                              "Add what you plan to buy in the\nfuture, keep track of your goals",
+                        ),
+                        WidgetForOnBoardingInfo(
+                          asset_image: 'assets/images/update_collection.png',
+                          title: 'Update and edit your\ncollection!',
+                          subtitle: "Add different items, edit the\ncollection",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Column(
@@ -182,7 +183,8 @@ class WidgetForOnBoardingInfo extends StatelessWidget {
             image: AssetImage(
               asset_image,
             ),
-            height: 280.w,
+            fit: BoxFit.fitHeight,
+            height: 280.h,
             width: 280.w,
           ),
           SizedBox(height: 30.h),

@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: Container(
-                    width: 370,
+                    width: 370.w,
                     child: Text(
                       "Your category",
                       style:
@@ -184,7 +184,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                height: 29.h,
                 alignment: Alignment.center,
                 child: Text(
                   category.name_category,

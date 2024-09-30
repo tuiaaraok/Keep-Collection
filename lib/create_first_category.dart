@@ -15,7 +15,6 @@ class CreateFirstCategory extends StatelessWidget {
             children: [
               Container(
                 width: 330.w,
-                height: 430.h,
                 decoration: BoxDecoration(
                     color: Color(0xFF4477B1),
                     borderRadius: BorderRadius.circular(24.r)),
@@ -30,6 +29,7 @@ class CreateFirstCategory extends StatelessWidget {
                           height: 280.h,
                           decoration: BoxDecoration(
                               image: DecorationImage(
+                                  fit: BoxFit.fitHeight,
                                   image: AssetImage(
                                       "assets/images/empty_category.png"))),
                         ),

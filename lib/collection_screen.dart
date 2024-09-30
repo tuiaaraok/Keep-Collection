@@ -114,7 +114,6 @@ class _CollectionScreenState extends State<CollectionScreen> {
                         : friends.isEmpty
                             ? Container(
                                 width: 340.w,
-                                height: 430.h,
                                 decoration: BoxDecoration(
                                     color: Color(0xFF4477B1),
                                     borderRadius: BorderRadius.all(
@@ -153,8 +152,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                                               widget.category!
                                                                   .image_category,
                                                             ),
-                                                            fit: BoxFit
-                                                                .fitHeight)),
+                                                            fit: BoxFit.cover)),
                                                   ),
                                                 ),
                                               ),
@@ -181,7 +179,8 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                                               const DecorationImage(
                                                             image: AssetImage(
                                                                 "assets/images/add_collection.png"),
-                                                            fit: BoxFit.cover,
+                                                            fit: BoxFit
+                                                                .fitHeight,
                                                           ),
                                                         ),
                                                       ),
@@ -357,7 +356,6 @@ class _CollectionScreenState extends State<CollectionScreen> {
                 ),
               ),
               Container(
-                height: 29.h,
                 alignment: Alignment.center,
                 child: Text(
                   collection.name_collection,
