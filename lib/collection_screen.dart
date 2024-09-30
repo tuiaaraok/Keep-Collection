@@ -254,7 +254,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                 left: 24.w,
                                 right: 24.w),
                             child: Container(
-                              width: 370,
+                              width: 370.w,
                               child: Text(
                                 "Your collection",
                                 style: TextStyle(
