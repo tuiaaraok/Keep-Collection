@@ -1,17 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geek_collectors/boxes.dart';
 import 'package:geek_collectors/data/collection.dart';
 import 'package:geek_collectors/navigation/navigation.dart';
 import 'data/category.dart' as cat;
-
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:iconsax_plus/iconsax_plus.dart';
-import 'data/category.dart' as cat;
 
+// ignore: must_be_immutable
 class CollectionScreen extends StatefulWidget {
   CollectionScreen({super.key, this.category});
   cat.Category? category;
@@ -38,11 +33,11 @@ class _CollectionScreenState extends State<CollectionScreen> {
           } else {
             friends = box.values.toList().where(
               (element) {
-                if (element.name_category == widget.category!.name_category) {
+                if (element.nameCategory == widget.category!.nameCategory) {
                   indexCollection.add(i);
                 }
                 i++;
-                return element.name_category == widget.category!.name_category;
+                return element.nameCategory == widget.category!.nameCategory;
               },
             ).toList();
           }
@@ -53,10 +48,10 @@ class _CollectionScreenState extends State<CollectionScreen> {
                       ? "Full collection"
                       : friends.isEmpty
                           ? ""
-                          : widget.category!.name_category,
+                          : widget.category!.nameCategory,
                   style: TextStyle(
                       fontSize: 24.sp,
-                      color: Color(0xFF4477B1),
+                      color: const Color(0xFF4477B1),
                       fontWeight: FontWeight.bold),
                 ),
                 leadingWidth:
@@ -69,9 +64,9 @@ class _CollectionScreenState extends State<CollectionScreen> {
                             fontWeight: FontWeight.bold,
                             fontSize: 24.sp),
                       )
-                    : SizedBox.shrink()),
+                    : const SizedBox.shrink()),
             body: SingleChildScrollView(
-              child: Container(
+              child: SizedBox(
                 width: 390.w,
                 child: Column(
                   children: [
@@ -80,7 +75,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                         Navigator.pop(context);
                       },
                       child: widget.category == null
-                          ? SizedBox.shrink()
+                          ? const SizedBox.shrink()
                           : SizedBox(
                               width: 340.w,
                               child: Row(
@@ -103,28 +98,29 @@ class _CollectionScreenState extends State<CollectionScreen> {
                         ? SizedBox(
                             width: 340.w,
                             child: Text(
-                              widget.category!.name_category,
+                              widget.category!.nameCategory,
                               style: TextStyle(
-                                  fontSize: 20.sp, color: Color(0xFF4477B1)),
+                                  fontSize: 20.sp,
+                                  color: const Color(0xFF4477B1)),
                             ),
                           )
-                        : SizedBox.shrink(),
+                        : const SizedBox.shrink(),
                     widget.category == null
-                        ? SizedBox.shrink()
+                        ? const SizedBox.shrink()
                         : friends.isEmpty
                             ? Container(
                                 width: 340.w,
                                 decoration: BoxDecoration(
-                                    color: Color(0xFF4477B1),
+                                    color: const Color(0xFF4477B1),
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(24.r))),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 280.h,
                                     child: Column(
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 280.w,
                                           height: 280.h,
                                           child: Stack(
@@ -133,10 +129,9 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                                 onTap: () {
                                                   Navigator.of(
                                                     context,
-                                                  ).pushNamed(
-                                                      add_collection_page,
+                                                  ).pushNamed(addCollectionPage,
                                                       arguments: widget.category
-                                                          ?.name_category);
+                                                          ?.nameCategory);
                                                 },
                                                 child: Center(
                                                   child: Container(
@@ -150,7 +145,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                                         image: DecorationImage(
                                                             image: MemoryImage(
                                                               widget.category!
-                                                                  .image_category,
+                                                                  .imageCategory,
                                                             ),
                                                             fit: BoxFit.cover)),
                                                   ),
@@ -165,18 +160,18 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                                         Navigator.of(
                                                           context,
                                                         ).pushNamed(
-                                                            add_collection_page,
+                                                            addCollectionPage,
                                                             arguments: widget
                                                                 .category
-                                                                ?.name_category);
+                                                                ?.nameCategory);
                                                       },
                                                       child: Container(
                                                         width: 88.w,
                                                         height: 93.h,
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           image:
-                                                              const DecorationImage(
+                                                              DecorationImage(
                                                             image: AssetImage(
                                                                 "assets/images/add_collection.png"),
                                                             fit: BoxFit
@@ -196,7 +191,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                               style: TextStyle(
                                                   fontSize: 28.sp,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Color(0xFF000000)
+                                                  color: const Color(0xFF000000)
                                                       .withOpacity(0.5)),
                                             )),
                                         Padding(
@@ -218,7 +213,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                   ),
                                 ),
                               )
-                            : SizedBox.shrink(),
+                            : const SizedBox.shrink(),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -226,13 +221,14 @@ class _CollectionScreenState extends State<CollectionScreen> {
                       onTap: () {
                         Navigator.of(
                           context,
-                        ).pushNamed(add_collection_page,
-                            arguments: widget.category?.name_category);
+                        ).pushNamed(addCollectionPage,
+                            arguments: widget.category?.nameCategory);
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 21.h),
                         child: CircleAvatar(
-                          backgroundColor: Color(0xFF4477B1).withOpacity(0.75),
+                          backgroundColor:
+                              const Color(0xFF4477B1).withOpacity(0.75),
                           radius: 45.r,
                           child: Icon(
                             Icons.add,
@@ -253,22 +249,22 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                 bottom: 20.h,
                                 left: 24.w,
                                 right: 24.w),
-                            child: Container(
+                            child: SizedBox(
                               width: 370.w,
                               child: Text(
                                 "Your collection",
                                 style: TextStyle(
-                                    color: Color(0xFF4477B1),
+                                    color: const Color(0xFF4477B1),
                                     fontSize: 20.sp,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                           )
-                        : SizedBox.shrink(),
+                        : const SizedBox.shrink(),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
                       child: widget.category == null && friends.isEmpty
-                          ? Container(
+                          ? SizedBox(
                               height: 370.h,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -310,7 +306,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
       ) {
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: (140.w / 199.h),
@@ -326,7 +322,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                   ? currentIndex
                   : indexCollection[currentIndex]);
         } else {
-          return SizedBox.shrink(); // Безопасно возвращаем пустой вид
+          return const SizedBox.shrink(); // Безопасно возвращаем пустой вид
         }
       },
     );
@@ -339,31 +335,29 @@ class _CollectionScreenState extends State<CollectionScreen> {
         onTap: () {
           Navigator.of(
             context,
-          ).pushNamed(redact_collection, arguments: index);
+          ).pushNamed(redactCollection, arguments: index);
         },
-        child: Container(
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    image: DecorationImage(
-                      image: MemoryImage(collection.image_collection),
-                      fit: BoxFit.cover,
-                    ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                  image: DecorationImage(
+                    image: MemoryImage(collection.imageCollection),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                child: Text(
-                  collection.name_collection,
-                  style: TextStyle(color: Colors.white, fontSize: 21.sp),
-                ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                collection.nameCollection,
+                style: TextStyle(color: Colors.white, fontSize: 21.sp),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

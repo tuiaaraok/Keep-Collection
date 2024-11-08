@@ -17,10 +17,10 @@ class CollectionAdapter extends TypeAdapter<Collection> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Collection(
-      name_category: fields[0] as String,
-      image_collection: fields[1] as Uint8List,
-      name_collection: fields[2] as String,
-      year_of_production: fields[3] as String,
+      nameCategory: fields[0] as String,
+      imageCollection: fields[1] as Uint8List,
+      nameCollection: fields[2] as String,
+      yearOfProduction: fields[3] as String,
       cost: fields[4] as String,
       description: fields[5] as String,
     );
@@ -31,13 +31,13 @@ class CollectionAdapter extends TypeAdapter<Collection> {
     writer
       ..writeByte(6)
       ..writeByte(0)
-      ..write(obj.name_category)
+      ..write(obj.nameCategory)
       ..writeByte(1)
-      ..write(obj.image_collection)
+      ..write(obj.imageCollection)
       ..writeByte(2)
-      ..write(obj.name_collection)
+      ..write(obj.nameCollection)
       ..writeByte(3)
-      ..write(obj.year_of_production)
+      ..write(obj.yearOfProduction)
       ..writeByte(4)
       ..write(obj.cost)
       ..writeByte(5)

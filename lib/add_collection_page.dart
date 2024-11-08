@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geek_collectors/boxes.dart';
-import 'package:geek_collectors/data/category.dart';
 import 'package:geek_collectors/data/collection.dart';
 import 'package:geek_collectors/navigation/navigation.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 
+// ignore: must_be_immutable
 class AddCollectionPage extends StatefulWidget {
   AddCollectionPage({super.key, this.category = ''});
   String? category;
@@ -63,7 +63,7 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             children: [
@@ -72,48 +72,45 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          home_screen,
+                          homeScreen,
                           arguments: true,
                         ).then((value) {
                           widget.category = value.toString();
-                          print(value.toString());
                           setState(() {});
                         });
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 25.w),
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                "Select category",
-                                style: TextStyle(
-                                    color: Colors.pink, fontSize: 20.sp),
-                              ),
-                              Icon(
-                                Icons.add,
-                                color: Colors.pink,
-                                size: 20.sp,
-                              ),
-                            ],
-                          ),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Select category",
+                              style: TextStyle(
+                                  color: Colors.pink, fontSize: 20.sp),
+                            ),
+                            Icon(
+                              Icons.add,
+                              color: Colors.pink,
+                              size: 20.sp,
+                            ),
+                          ],
                         ),
                       ),
                     )
-                  : Container(
+                  : SizedBox(
                       width: 340.w,
                       child: Text(
                         widget.category.toString(),
                         style: TextStyle(
                             fontSize: 20.sp,
-                            color: Color(0xFF4477B1),
+                            color: const Color(0xFF4477B1),
                             fontWeight: FontWeight.w500),
                       ),
                     ),
               SizedBox(
                 height: 10.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Pick an image",
@@ -136,7 +133,7 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                   height: 170.h,
                   width: 140.w,
                   decoration: BoxDecoration(
-                    color: Color(0xFF4477B1).withOpacity(0.5),
+                    color: const Color(0xFF4477B1).withOpacity(0.5),
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
                     image: _image == null
                         ? null
@@ -147,14 +144,15 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                       child: CircleAvatar(
                     radius: 30.r,
                     backgroundColor: Colors.white.withOpacity(0.12),
-                    child: Image(image: AssetImage("assets/icons/Image.png")),
+                    child: const Image(
+                        image: AssetImage("assets/icons/Image.png")),
                   )),
                 ),
               ),
               SizedBox(
                 height: 75.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Name of collection",
@@ -172,8 +170,8 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: Center(
@@ -202,7 +200,7 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
               SizedBox(
                 height: 28.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Year of production",
@@ -220,8 +218,8 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: Center(
@@ -250,7 +248,7 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
               SizedBox(
                 height: 28.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Cost",
@@ -268,8 +266,8 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: Center(
@@ -298,7 +296,7 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
               SizedBox(
                 height: 28.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Description",
@@ -316,8 +314,8 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: TextField(
@@ -374,10 +372,10 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                           Box<Collection> contactsBox =
                               Hive.box<Collection>(HiveBoxes.collection);
                           Collection addwishfriend = Collection(
-                            name_category: widget.category.toString(),
-                            image_collection: _image!,
-                            name_collection: nameCollectionController.text,
-                            year_of_production: yearOfProductionController.text,
+                            nameCategory: widget.category.toString(),
+                            imageCollection: _image!,
+                            nameCollection: nameCollectionController.text,
+                            yearOfProduction: yearOfProductionController.text,
                             cost: costController.text,
                             description: descriptionController.text,
                           );
@@ -392,8 +390,8 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
                         height: 60.h,
                         decoration: BoxDecoration(
                             color: _updateFormCompletion()
-                                ? Color(0xFF4477B1)
-                                : Color(0xFF4477B1).withOpacity(0.5),
+                                ? const Color(0xFF4477B1)
+                                : const Color(0xFF4477B1).withOpacity(0.5),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(12.r))),
                         child: Center(

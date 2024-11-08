@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geek_collectors/navigation/navigation.dart';
 
 class CreateFirstCategory extends StatelessWidget {
+  const CreateFirstCategory({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,18 +17,18 @@ class CreateFirstCategory extends StatelessWidget {
               Container(
                 width: 330.w,
                 decoration: BoxDecoration(
-                    color: Color(0xFF4477B1),
+                    color: const Color(0xFF4477B1),
                     borderRadius: BorderRadius.circular(24.r)),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Container(
+                  child: SizedBox(
                     width: 280.h,
                     child: Column(
                       children: [
                         Container(
                           width: 280.w,
                           height: 280.h,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               image: DecorationImage(
                                   fit: BoxFit.fitHeight,
                                   image: AssetImage(
@@ -40,7 +41,8 @@ class CreateFirstCategory extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 28.sp,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF000000).withOpacity(0.5)),
+                                  color:
+                                      const Color(0xFF000000).withOpacity(0.5)),
                             )),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 16.h),
@@ -71,7 +73,7 @@ class CreateFirstCategory extends StatelessWidget {
                   Navigator.of(
                     context,
                   ).pushNamed(
-                    add_category_screen,
+                    addCategoryScreen,
                     arguments: true,
                   );
                 },
@@ -79,7 +81,7 @@ class CreateFirstCategory extends StatelessWidget {
                   width: 320.w,
                   height: 60.h,
                   decoration: BoxDecoration(
-                      color: Color(0xFF4477B1),
+                      color: const Color(0xFF4477B1),
                       borderRadius: BorderRadius.all(Radius.circular(18.r))),
                   child: Center(
                     child: Text(

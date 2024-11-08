@@ -5,7 +5,10 @@ import 'package:geek_collectors/navigation/navigation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
 
@@ -24,13 +27,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 150),
+      duration: const Duration(milliseconds: 150),
       margin: EdgeInsets.symmetric(horizontal: 4.w),
       height: isActive ? 6.0.h : 6.h,
       width: isActive ? 35.w : 20.h,
       decoration: BoxDecoration(
-        color: isActive ? Color(0xFF4477B1) : Colors.grey,
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        color: isActive ? const Color(0xFF4477B1) : Colors.grey,
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
     );
   }
@@ -41,36 +44,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: Container(
-          decoration: BoxDecoration(color: Colors.black),
+          decoration: const BoxDecoration(color: Colors.black),
           child: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Expanded(
-                  child: Container(
+                  child: SizedBox(
                     child: PageView(
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       controller: _pageController,
                       onPageChanged: (int page) {
                         setState(() {
                           _currentPage = page;
                         });
                       },
-                      children: <Widget>[
+                      children: const <Widget>[
                         WidgetForOnBoardingInfo(
-                          asset_image: 'assets/images/create_section.png',
+                          assetImage: 'assets/images/create_section.png',
                           title: 'Add sections with\ncollections!',
                           subtitle:
                               'Create a section with your\ncollections, record and add the image\nyou need',
                         ),
                         WidgetForOnBoardingInfo(
-                          asset_image: 'assets/images/buy_add.png',
+                          assetImage: 'assets/images/buy_add.png',
                           title: 'Do you have the things\nyou want?',
                           subtitle:
                               "Add what you plan to buy in the\nfuture, keep track of your goals",
                         ),
                         WidgetForOnBoardingInfo(
-                          asset_image: 'assets/images/update_collection.png',
+                          assetImage: 'assets/images/update_collection.png',
                           title: 'Update and edit your\ncollection!',
                           subtitle: "Add different items, edit the\ncollection",
                         ),
@@ -90,10 +93,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     GestureDetector(
                       onTap: () {
                         if (_currentPage == 2) {
-                          Navigator.pushNamed(context, create_first_category);
+                          Navigator.pushNamed(context, createFirstCategory);
                         }
                         _pageController.nextPage(
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           curve: Curves.ease,
                         );
                       },
@@ -101,7 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         width: 320.w,
                         height: 60.h,
                         decoration: BoxDecoration(
-                            color: Color(0xFF4477B1),
+                            color: const Color(0xFF4477B1),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(12.r))),
                         child: Center(
@@ -119,9 +122,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       padding: EdgeInsets.symmetric(vertical: 20.h),
                       child: GestureDetector(
                         onTap: () async {
-                          final Uri _url = Uri.parse('https://flutter.dev');
-                          if (!await launchUrl(_url)) {
-                            throw Exception('Could not launch $_url');
+                          final Uri url = Uri.parse(
+                              'https://docs.google.com/document/d/1yHOPBUMcVkKtSBBL5AZURSEPIsRNA4Rfdp9UrTkcUho/mobilebasic');
+                          if (!await launchUrl(url)) {
+                            throw Exception('Could not launch $url');
                           }
                         },
                         child: Row(
@@ -167,10 +171,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 class WidgetForOnBoardingInfo extends StatelessWidget {
   final String title;
   final String subtitle;
-  final String asset_image;
+  final String assetImage;
 
-  WidgetForOnBoardingInfo(
-      {required this.title, required this.subtitle, required this.asset_image});
+  const WidgetForOnBoardingInfo(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.assetImage});
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +188,7 @@ class WidgetForOnBoardingInfo extends StatelessWidget {
         children: <Widget>[
           Image(
             image: AssetImage(
-              asset_image,
+              assetImage,
             ),
             fit: BoxFit.fitHeight,
             height: 280.h,
@@ -194,7 +201,7 @@ class WidgetForOnBoardingInfo extends StatelessWidget {
             style: kTitleStyle,
           ),
           SizedBox(height: 15.h),
-          Container(
+          SizedBox(
             width: 380.w,
             child: Text(
               subtitle,

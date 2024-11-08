@@ -5,8 +5,8 @@ part 'category.g.dart';
 @HiveType(typeId: 1)
 class Category {
   @HiveField(0)
-  final Uint8List image_category;
+  final Uint8List imageCategory;
   @HiveField(1)
-  final String name_category;
-  Category({required this.image_category, required this.name_category});
+  final String nameCategory;
+  Category({required this.imageCategory, required this.nameCategory});
 }

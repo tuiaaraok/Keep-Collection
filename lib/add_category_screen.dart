@@ -7,8 +7,9 @@ import 'package:geek_collectors/navigation/navigation.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 
+// ignore: must_be_immutable
 class AddCategoryScreen extends StatefulWidget {
-  AddCategoryScreen({this.isFistCategory = false});
+  AddCategoryScreen({super.key, this.isFistCategory = false});
   bool? isFistCategory;
   @override
   State<AddCategoryScreen> createState() => _AddCategoryScreenState();
@@ -53,11 +54,11 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Pick an image",
@@ -80,7 +81,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                   height: 170.h,
                   width: 140.w,
                   decoration: BoxDecoration(
-                    color: Color(0xFF4477B1).withOpacity(0.5),
+                    color: const Color(0xFF4477B1).withOpacity(0.5),
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
                     image: _image == null
                         ? null
@@ -91,14 +92,15 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                       child: CircleAvatar(
                     radius: 30.r,
                     backgroundColor: Colors.white.withOpacity(0.12),
-                    child: Image(image: AssetImage("assets/icons/Image.png")),
+                    child: const Image(
+                        image: AssetImage("assets/icons/Image.png")),
                   )),
                 ),
               ),
               SizedBox(
                 height: 75.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Name of category",
@@ -116,8 +118,8 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: Center(
@@ -173,8 +175,8 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                         Box<Category> contactsBox =
                             Hive.box<Category>(HiveBoxes.category);
                         Category addwishfriend = Category(
-                          name_category: nameController.text,
-                          image_category: _image!,
+                          nameCategory: nameController.text,
+                          imageCategory: _image!,
                         );
                         contactsBox.add(addwishfriend);
                         if (widget.isFistCategory == false) {
@@ -182,7 +184,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                             context,
                           ).pop();
                         } else {
-                          Navigator.pushNamed(context, menu_page);
+                          Navigator.pushNamed(context, menuPage);
                         }
                       }
                     },
@@ -191,8 +193,8 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                       height: 60.h,
                       decoration: BoxDecoration(
                           color: _updateFormCompletion()
-                              ? Color(0xFF4477B1)
-                              : Color(0xFF4477B1).withOpacity(0.5),
+                              ? const Color(0xFF4477B1)
+                              : const Color(0xFF4477B1).withOpacity(0.5),
                           borderRadius:
                               BorderRadius.all(Radius.circular(12.r))),
                       child: Center(

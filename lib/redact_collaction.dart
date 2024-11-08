@@ -3,14 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geek_collectors/boxes.dart';
 import 'package:geek_collectors/data/collection.dart';
-import 'package:geek_collectors/home_screen.dart';
-import 'package:geek_collectors/navigation/navigation.dart';
 import 'package:hive/hive.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RedactCollaction extends StatefulWidget {
-  RedactCollaction({required this.index});
+  const RedactCollaction({super.key, required this.index});
   final int index;
   @override
   State<RedactCollaction> createState() => _RedactCollactionState();
@@ -34,11 +32,11 @@ class _RedactCollactionState extends State<RedactCollaction> {
   void initState() {
     super.initState();
     contactsBox = Hive.box<Collection>(HiveBoxes.collection);
-    _image = contactsBox.getAt(widget.index)!.image_collection;
+    _image = contactsBox.getAt(widget.index)!.imageCollection;
     nameCollectionController.text =
-        contactsBox.getAt(widget.index)!.name_collection;
+        contactsBox.getAt(widget.index)!.nameCollection;
     yearOfProductionController.text =
-        contactsBox.getAt(widget.index)!.year_of_production;
+        contactsBox.getAt(widget.index)!.yearOfProduction;
     costController.text = contactsBox.getAt(widget.index)!.cost;
     descriptionController.text = contactsBox.getAt(widget.index)!.description;
   }
@@ -51,10 +49,10 @@ class _RedactCollactionState extends State<RedactCollaction> {
         leading: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Text(
-            contactsBox.getAt(widget.index)!.name_category,
+            contactsBox.getAt(widget.index)!.nameCategory,
             style: TextStyle(
                 fontSize: 24.sp,
-                color: Color(0xFF4477B1),
+                color: const Color(0xFF4477B1),
                 fontWeight: FontWeight.bold),
           ),
         ),
@@ -66,11 +64,10 @@ class _RedactCollactionState extends State<RedactCollaction> {
               child: GestureDetector(
                 onTap: () {
                   Collection addwishfriend = Collection(
-                    name_category:
-                        contactsBox.getAt(widget.index)!.name_category,
-                    image_collection: _image!,
-                    name_collection: nameCollectionController.text,
-                    year_of_production: yearOfProductionController.text,
+                    nameCategory: contactsBox.getAt(widget.index)!.nameCategory,
+                    imageCollection: _image!,
+                    nameCollection: nameCollectionController.text,
+                    yearOfProduction: yearOfProductionController.text,
                     cost: costController.text,
                     description: descriptionController.text,
                   );
@@ -79,8 +76,8 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 },
                 child: CircleAvatar(
                   radius: 20.r,
-                  backgroundColor: Color(0xFFD9D9D9),
-                  child: Center(
+                  backgroundColor: const Color(0xFFD9D9D9),
+                  child: const Center(
                       child: Icon(
                     IconsaxPlusLinear.edit_2,
                     color: Color(0xFF4477B1),
@@ -92,7 +89,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             children: [
@@ -102,7 +99,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                     setState(() {});
                   });
                 },
-                child: Container(
+                child: SizedBox(
                   width: 390.w,
                   child: Stack(
                     children: [
@@ -116,18 +113,19 @@ class _RedactCollactionState extends State<RedactCollaction> {
                                   builder: (BuildContext context) =>
                                       CustomDialog(
                                         index: widget.index,
-                                        name_cat: contactsBox
+                                        nameCat: contactsBox
                                             .getAt(widget.index)!
-                                            .name_category,
+                                            .nameCategory,
                                       ));
                             },
                             child: CircleAvatar(
                               radius: 20.r,
-                              backgroundColor: Color(0xFFD9D9D9),
+                              backgroundColor: const Color(0xFFD9D9D9),
                               child: Center(
                                 child: Image(
-                                  image: AssetImage("assets/icons/Delete.png"),
-                                  color: Color(0xFF4477B1),
+                                  image: const AssetImage(
+                                      "assets/icons/Delete.png"),
+                                  color: const Color(0xFF4477B1),
                                   fit: BoxFit.fill,
                                   height: 20.h,
                                   width: 20.h,
@@ -164,7 +162,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                               height: 170.h,
                               width: 140.w,
                               decoration: BoxDecoration(
-                                color: Color(0xFF5545B8).withOpacity(0.5),
+                                color: const Color(0xFF5545B8).withOpacity(0.5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(12.r)),
                                 image: _image == null
@@ -177,7 +175,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                                   child: CircleAvatar(
                                 radius: 30.r,
                                 backgroundColor: Colors.white.withOpacity(0.12),
-                                child: Image(
+                                child: const Image(
                                     image:
                                         AssetImage("assets/icons/Image.png")),
                               )),
@@ -192,7 +190,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
               SizedBox(
                 height: 75.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Name of collection",
@@ -210,8 +208,8 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: Center(
@@ -240,7 +238,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
               SizedBox(
                 height: 28.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Year of production",
@@ -258,8 +256,8 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: Center(
@@ -288,7 +286,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
               SizedBox(
                 height: 28.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Cost",
@@ -306,8 +304,8 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: Center(
@@ -336,7 +334,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
               SizedBox(
                 height: 28.h,
               ),
-              Container(
+              SizedBox(
                 width: 310.w,
                 child: Text(
                   "Description",
@@ -354,8 +352,8 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: Color(0xFF4477B1).withOpacity(0.2),
-                    border: Border.all(color: Color(0xFF4477B1))),
+                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: TextField(
@@ -391,10 +389,11 @@ class _RedactCollactionState extends State<RedactCollaction> {
   }
 }
 
+// ignore: must_be_immutable
 class CustomDialog extends StatelessWidget {
-  CustomDialog({required this.index, required this.name_cat});
+  CustomDialog({super.key, required this.index, required this.nameCat});
   int index;
-  String name_cat;
+  String nameCat;
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -407,19 +406,19 @@ class CustomDialog extends StatelessWidget {
 
   Widget dialogContent(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 0.0, right: 0.0),
+      margin: const EdgeInsets.only(left: 0.0, right: 0.0),
       child: Container(
         height: 300.h,
         width: 310.w,
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 18.0,
         ),
-        margin: EdgeInsets.only(top: 13.0, right: 8.0),
+        margin: const EdgeInsets.only(top: 13.0, right: 8.0),
         decoration: BoxDecoration(
-            color: Color(0xFF4477B1),
+            color: const Color(0xFF4477B1),
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(16.0),
-            boxShadow: <BoxShadow>[
+            boxShadow: const <BoxShadow>[
               BoxShadow(
                 color: Colors.black26,
                 blurRadius: 0.0,
@@ -432,7 +431,7 @@ class CustomDialog extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: new Text("Delete?",
+              child: Text("Delete?",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 20.sp,
@@ -441,7 +440,7 @@ class CustomDialog extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: new Text('“${name_cat}”',
+              child: Text('“$nameCat”',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 25.sp,
@@ -453,9 +452,11 @@ class CustomDialog extends StatelessWidget {
                 final constain = Hive.box<Collection>(HiveBoxes.collection);
                 constain.deleteAt(index).whenComplete(() {
                   Navigator.pop(
+                    // ignore: use_build_context_synchronously
                     context,
                   );
                   Navigator.pop(
+                    // ignore: use_build_context_synchronously
                     context,
                   );
                 });

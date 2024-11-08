@@ -9,26 +9,26 @@ import 'package:geek_collectors/menu_page.dart';
 import 'package:geek_collectors/onboarding_screen.dart';
 import 'package:geek_collectors/redact_collaction.dart';
 
-const String onboarding_screen = "/onboarding-screen";
-const String home_screen = "/home-screen";
-const String add_category_screen = "/add-category-screen";
-const String add_collection_page = "/add-collection-page";
-const String collection_screen = "/collection-screen";
-const String redact_collection = "/redact-collection";
-const String create_first_category = "/create-first-category";
-const String menu_page = "/menu-page";
+const String onboardingScreen = "/onboarding-screen";
+const String homeScreen = "/home-screen";
+const String addCategoryScreen = "/add-category-screen";
+const String addCollectionPage = "/add-collection-page";
+const String collectionScreen = "/collection-screen";
+const String redactCollection = "/redact-collection";
+const String createFirstCategory = "/create-first-category";
+const String menuPage = "/menu-page";
 
 class NavigationApp {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case onboarding_screen:
+      case onboardingScreen:
         return MaterialPageRoute(
           builder: (_) {
-            return OnboardingScreen();
+            return const OnboardingScreen();
           },
           settings: settings,
         );
-      case add_category_screen:
+      case addCategoryScreen:
         var args =
             settings.arguments == null ? false : settings.arguments as bool;
         return MaterialPageRoute(
@@ -39,21 +39,21 @@ class NavigationApp {
           },
           settings: settings,
         );
-      case create_first_category:
+      case createFirstCategory:
         return MaterialPageRoute(
           builder: (_) {
-            return CreateFirstCategory();
+            return const CreateFirstCategory();
           },
           settings: settings,
         );
-      case menu_page:
+      case menuPage:
         return MaterialPageRoute(
           builder: (_) {
-            return MenuPage();
+            return const MenuPage();
           },
           settings: settings,
         );
-      case add_collection_page:
+      case addCollectionPage:
         var args =
             settings.arguments == null ? '' : settings.arguments as String;
         return MaterialPageRoute(
@@ -64,7 +64,7 @@ class NavigationApp {
           },
           settings: settings,
         );
-      case home_screen:
+      case homeScreen:
         var args = settings.arguments as bool;
         return MaterialPageRoute(
           builder: (_) {
@@ -74,7 +74,7 @@ class NavigationApp {
           },
           settings: settings,
         );
-      case collection_screen:
+      case collectionScreen:
         var args = settings.arguments as Category;
         return MaterialPageRoute(
           builder: (_) {
@@ -84,7 +84,7 @@ class NavigationApp {
           },
           settings: settings,
         );
-      case redact_collection:
+      case redactCollection:
         var args = settings.arguments as int;
         return MaterialPageRoute(
           builder: (_) {
@@ -97,7 +97,7 @@ class NavigationApp {
       default:
         return MaterialPageRoute(
           builder: (_) {
-            return OnboardingScreen();
+            return const OnboardingScreen();
           },
           settings: settings,
         );

@@ -4,11 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geek_collectors/boxes.dart';
 import 'package:geek_collectors/data/category.dart';
 import 'package:geek_collectors/navigation/navigation.dart';
-
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key, this.isCreateCollection = false});
   bool? isCreateCollection;
@@ -31,14 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 "Home",
                 style: TextStyle(
                     fontSize: 24.sp,
-                    color: Color(0xFF4477B1),
+                    color: const Color(0xFF4477B1),
                     fontWeight: FontWeight.bold),
               ),
             ),
             Icon(
               IconsaxPlusBold.house_2,
               size: 24.sp,
-              color: Color(0xFF4477B1),
+              color: const Color(0xFF4477B1),
             )
           ],
         ),
@@ -47,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             width: 390.w,
             child: Column(
               children: [
@@ -59,13 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.of(
                       context,
                     ).pushNamed(
-                      add_category_screen,
+                      addCategoryScreen,
                     );
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 21.h),
                     child: CircleAvatar(
-                      backgroundColor: Color(0xFF4477B1).withOpacity(0.75),
+                      backgroundColor:
+                          const Color(0xFF4477B1).withOpacity(0.75),
                       radius: 45.r,
                       child: Icon(
                         Icons.add,
@@ -81,12 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20.h),
-                  child: Container(
+                  child: SizedBox(
                     width: 370.w,
                     child: Text(
                       "Your category",
-                      style:
-                          TextStyle(color: Color(0xFF4477B1), fontSize: 20.sp),
+                      style: TextStyle(
+                          color: const Color(0xFF4477B1), fontSize: 20.sp),
                     ),
                   ),
                 ),
@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Hive.box<Category>(HiveBoxes.category).listenable(),
                     builder: (context, Box<Category> box, _) {
                       return box.isEmpty
-                          ? Container(
+                          ? SizedBox(
                               height: 370.h,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: (140.w / 199.h),
@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
             friends[currentIndex],
           );
         } else {
-          return SizedBox.shrink(); // Безопасно возвращаем пустой вид
+          return const SizedBox.shrink(); // Безопасно возвращаем пустой вид
         }
       },
     );
@@ -162,36 +162,34 @@ class _HomeScreenState extends State<HomeScreen> {
       child: GestureDetector(
         onTap: () {
           if (widget.isCreateCollection == true) {
-            Navigator.pop(context, category.name_category);
+            Navigator.pop(context, category.nameCategory);
           } else {
             Navigator.of(
               context,
-            ).pushNamed(collection_screen, arguments: category);
+            ).pushNamed(collectionScreen, arguments: category);
           }
         },
-        child: Container(
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    image: DecorationImage(
-                      image: MemoryImage(category.image_category),
-                      fit: BoxFit.cover,
-                    ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                  image: DecorationImage(
+                    image: MemoryImage(category.imageCategory),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                child: Text(
-                  category.name_category,
-                  style: TextStyle(color: Colors.white, fontSize: 21.sp),
-                ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                category.nameCategory,
+                style: TextStyle(color: Colors.white, fontSize: 21.sp),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

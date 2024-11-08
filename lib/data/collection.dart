@@ -5,22 +5,22 @@ part 'collection.g.dart';
 @HiveType(typeId: 2)
 class Collection {
   @HiveField(0)
-  final String name_category;
+  final String nameCategory;
   @HiveField(1)
-  final Uint8List image_collection;
+  final Uint8List imageCollection;
   @HiveField(2)
-  final String name_collection;
+  final String nameCollection;
   @HiveField(3)
-  final String year_of_production;
+  final String yearOfProduction;
   @HiveField(4)
   final String cost;
   @HiveField(5)
   final String description;
   Collection({
-    required this.name_category,
-    required this.image_collection,
-    required this.name_collection,
-    required this.year_of_production,
+    required this.nameCategory,
+    required this.imageCollection,
+    required this.nameCollection,
+    required this.yearOfProduction,
     required this.cost,
     required this.description,
   });

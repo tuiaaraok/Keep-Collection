@@ -6,7 +6,7 @@ import 'package:geek_collectors/info_page.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
 class MenuPage extends StatefulWidget {
-  MenuPage({
+  const MenuPage({
     super.key,
   });
 
@@ -16,11 +16,11 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   int currentIndex = 1;
-  List<Widget> menu_body = [CollectionScreen(), HomeScreen(), InfoPage()];
+  List<Widget> menuBody = [CollectionScreen(), HomeScreen(), const InfoPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 75.h,
         width: double.maxFinite,
         child: Row(
@@ -35,19 +35,19 @@ class _MenuPageState extends State<MenuPage> {
                 width: 60.w,
                 height: 75.h,
                 decoration: BoxDecoration(
-                    color: currentIndex == 0 ? Color(0xFF4477B1) : null,
+                    color: currentIndex == 0 ? const Color(0xFF4477B1) : null,
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(100.r),
                         topLeft: Radius.circular(100.r))),
                 child: Padding(
                   padding: currentIndex == 0
                       ? EdgeInsets.only(bottom: 2.h)
-                      : EdgeInsets.all(0),
+                      : const EdgeInsets.all(0),
                   child: Icon(
                     IconsaxPlusLinear.edit,
                     color: currentIndex == 0
                         ? Colors.white
-                        : Color(0xFF4477B1).withOpacity(0.5),
+                        : const Color(0xFF4477B1).withOpacity(0.5),
                     size: 30.h,
                   ),
                 ),
@@ -62,19 +62,19 @@ class _MenuPageState extends State<MenuPage> {
                 width: 60.w,
                 height: 75.h,
                 decoration: BoxDecoration(
-                    color: currentIndex == 1 ? Color(0xFF4477B1) : null,
+                    color: currentIndex == 1 ? const Color(0xFF4477B1) : null,
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(100.r),
                         topLeft: Radius.circular(100.r))),
                 child: Padding(
                   padding: currentIndex == 1
                       ? EdgeInsets.only(bottom: 2.h)
-                      : EdgeInsets.all(0),
+                      : const EdgeInsets.all(0),
                   child: Icon(
                     IconsaxPlusLinear.house_2,
                     color: currentIndex == 1
                         ? Colors.white
-                        : Color(0xFF4477B1).withOpacity(0.5),
+                        : const Color(0xFF4477B1).withOpacity(0.5),
                     size: 30.h,
                   ),
                 ),
@@ -89,19 +89,19 @@ class _MenuPageState extends State<MenuPage> {
                 width: 60.w,
                 height: 75.h,
                 decoration: BoxDecoration(
-                    color: currentIndex == 2 ? Color(0xFF4477B1) : null,
+                    color: currentIndex == 2 ? const Color(0xFF4477B1) : null,
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(100.r),
                         topLeft: Radius.circular(100.r))),
                 child: Padding(
                   padding: currentIndex == 2
                       ? EdgeInsets.only(bottom: 2.h)
-                      : EdgeInsets.all(0),
+                      : const EdgeInsets.all(0),
                   child: Icon(
                     IconsaxPlusLinear.setting_2,
                     color: currentIndex == 2
                         ? Colors.white
-                        : Color(0xFF4477B1).withOpacity(0.5),
+                        : const Color(0xFF4477B1).withOpacity(0.5),
                     size: 30.h,
                   ),
                 ),
@@ -110,7 +110,7 @@ class _MenuPageState extends State<MenuPage> {
           ],
         ),
       ),
-      body: menu_body[currentIndex],
+      body: menuBody[currentIndex],
     );
   }
 }
