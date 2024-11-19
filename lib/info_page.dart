@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:launch_review/launch_review.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
@@ -167,7 +167,9 @@ class InfoPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
                         onTap: () async {
-                          LaunchReview.launch(iOSAppId: "6737982539");
+                          final InAppReview inAppReview = InAppReview.instance;
+                          inAppReview.openStoreListing(appStoreId: '6737982539',);
+                          // 6737982539
                         },
                         child: Container(
                           width: 310.w,
