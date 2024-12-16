@@ -47,7 +47,7 @@ class _MenuPageState extends State<MenuPage> {
                     IconsaxPlusLinear.edit,
                     color: currentIndex == 0
                         ? Colors.white
-                        : const Color(0xFF4477B1).withOpacity(0.5),
+                        : const Color.fromRGBO(68, 119, 177, 0.5),
                     size: 30.h,
                   ),
                 ),
@@ -74,7 +74,7 @@ class _MenuPageState extends State<MenuPage> {
                     IconsaxPlusLinear.house_2,
                     color: currentIndex == 1
                         ? Colors.white
-                        : const Color(0xFF4477B1).withOpacity(0.5),
+                        : const Color.fromRGBO(68, 119, 177, 0.5),
                     size: 30.h,
                   ),
                 ),
@@ -101,7 +101,7 @@ class _MenuPageState extends State<MenuPage> {
                     IconsaxPlusLinear.setting_2,
                     color: currentIndex == 2
                         ? Colors.white
-                        : const Color(0xFF4477B1).withOpacity(0.5),
+                        : const Color.fromRGBO(68, 119, 177, 0.5),
                     size: 30.h,
                   ),
                 ),

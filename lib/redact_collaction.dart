@@ -162,7 +162,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                               height: 170.h,
                               width: 140.w,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF5545B8).withOpacity(0.5),
+                                color: const Color.fromRGBO(85, 69, 184, 0.5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(12.r)),
                                 image: _image == null
@@ -174,7 +174,8 @@ class _RedactCollactionState extends State<RedactCollaction> {
                               child: Center(
                                   child: CircleAvatar(
                                 radius: 30.r,
-                                backgroundColor: Colors.white.withOpacity(0.12),
+                                backgroundColor:
+                                    const Color.fromRGBO(255, 255, 255, 0.12),
                                 child: const Image(
                                     image:
                                         AssetImage("assets/icons/Image.png")),
@@ -208,7 +209,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    color: const Color.fromRGBO(68, 119, 177, 0.2),
                     border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -256,7 +257,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    color: const Color.fromRGBO(68, 119, 177, 0.2),
                     border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -304,7 +305,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    color: const Color.fromRGBO(68, 119, 177, 0.2),
                     border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -352,7 +353,7 @@ class _RedactCollactionState extends State<RedactCollaction> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    color: const Color.fromRGBO(68, 119, 177, 0.2),
                     border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -444,7 +445,7 @@ class CustomDialog extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 25.sp,
-                      color: Colors.white.withOpacity(0.5),
+                      color: const Color.fromRGBO(255, 255, 255, 0.5),
                       fontWeight: FontWeight.w600)),
             ),
             GestureDetector(

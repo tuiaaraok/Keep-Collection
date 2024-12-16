@@ -81,7 +81,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                   height: 170.h,
                   width: 140.w,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF4477B1).withOpacity(0.5),
+                    color: const Color.fromRGBO(68, 119, 177, 0.5),
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
                     image: _image == null
                         ? null
@@ -91,7 +91,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                   child: Center(
                       child: CircleAvatar(
                     radius: 30.r,
-                    backgroundColor: Colors.white.withOpacity(0.12),
+                    backgroundColor: Color.fromRGBO(255, 255, 255, 0.12),
                     child: const Image(
                         image: AssetImage("assets/icons/Image.png")),
                   )),
@@ -118,7 +118,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                 width: 310.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12.r)),
-                    color: const Color(0xFF4477B1).withOpacity(0.2),
+                    color: const Color.fromRGBO(68, 119, 177, 0.2),
                     border: Border.all(color: const Color(0xFF4477B1))),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -194,7 +194,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                       decoration: BoxDecoration(
                           color: _updateFormCompletion()
                               ? const Color(0xFF4477B1)
-                              : const Color(0xFF4477B1).withOpacity(0.5),
+                              : const Color.fromRGBO(68, 119, 177, 0.5),
                           borderRadius:
                               BorderRadius.all(Radius.circular(12.r))),
                       child: Center(

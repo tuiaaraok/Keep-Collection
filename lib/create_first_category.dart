@@ -39,10 +39,10 @@ class CreateFirstCategory extends StatelessWidget {
                             child: Text(
                               "Empty",
                               style: TextStyle(
-                                  fontSize: 28.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color:
-                                      const Color(0xFF000000).withOpacity(0.5)),
+                                fontSize: 28.sp,
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromRGBO(0, 0, 0, 0.5),
+                              ),
                             )),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 16.h),

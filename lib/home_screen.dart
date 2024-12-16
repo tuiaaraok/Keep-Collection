@@ -64,8 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 21.h),
                     child: CircleAvatar(
-                      backgroundColor:
-                          const Color(0xFF4477B1).withOpacity(0.75),
+                      backgroundColor: const Color.fromRGBO(68, 119, 177, 0.75),
                       radius: 45.r,
                       child: Icon(
                         Icons.add,

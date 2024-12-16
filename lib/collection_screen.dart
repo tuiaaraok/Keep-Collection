@@ -189,10 +189,11 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                             child: Text(
                                               "Empty",
                                               style: TextStyle(
-                                                  fontSize: 28.sp,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: const Color(0xFF000000)
-                                                      .withOpacity(0.5)),
+                                                fontSize: 28.sp,
+                                                fontWeight: FontWeight.bold,
+                                                color: const Color.fromRGBO(
+                                                    0, 0, 0, 0.5),
+                                              ),
                                             )),
                                         Padding(
                                           padding: EdgeInsets.symmetric(
@@ -228,7 +229,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                         padding: EdgeInsets.symmetric(vertical: 21.h),
                         child: CircleAvatar(
                           backgroundColor:
-                              const Color(0xFF4477B1).withOpacity(0.75),
+                              const Color.fromRGBO(68, 119, 177, 0.75),
                           radius: 45.r,
                           child: Icon(
                             Icons.add,
