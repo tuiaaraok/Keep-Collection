@@ -91,7 +91,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                   child: Center(
                       child: CircleAvatar(
                     radius: 30.r,
-                    backgroundColor: Color.fromRGBO(255, 255, 255, 0.12),
+                    backgroundColor: const Color.fromRGBO(255, 255, 255, 0.12),
                     child: const Image(
                         image: AssetImage("assets/icons/Image.png")),
                   )),
